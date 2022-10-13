@@ -1,3 +1,5 @@
+import 'package:currencyconverterapp/domain/entity/country_entity.dart';
+
 class CountryModel {
   String? countryId;
   String? countryName;
@@ -9,4 +11,12 @@ class CountryModel {
       this.countryCurrencyCode,
       this.countryImage,
       this.countryName});
+
+  CountryEntity toCountryEntity() {
+    return CountryEntity(
+        countryCurrencyCode: countryCurrencyCode,
+        countryId: countryId,
+        countryImage: countryImage,
+        countryName: countryName);
+  }
 }
