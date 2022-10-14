@@ -1,5 +1,5 @@
-import 'package:currencyconverterapp/data/model/country_model.dart';
 import 'package:currencyconverterapp/core/utils/resources/image_path.dart';
+import 'package:currencyconverterapp/data/model/country_model.dart';
 
 List<CountryModel> countriesList = [
   CountryModel(

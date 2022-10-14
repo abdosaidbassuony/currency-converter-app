@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:currencyconverterapp/core/utils/resources/color_scheme.dart';
 
 mixin LoadingManager {
