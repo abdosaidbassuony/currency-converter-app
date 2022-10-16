@@ -66,3 +66,12 @@ class SelectToCurrencyState extends CurrencyConverterState {
   @override
   List<Object?> get props => [toCurrencyId];
 }
+
+class ConvertCurrencyState extends CurrencyConverterState {
+  final CurrencyConvertEntity? currencyConvertEntity;
+
+  const ConvertCurrencyState({this.currencyConvertEntity});
+
+  @override
+  List<Object?> get props => [currencyConvertEntity];
+}

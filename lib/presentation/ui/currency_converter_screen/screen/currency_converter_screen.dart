@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:currencyconverterapp/core/base_widget/base_stateful_widget.dart';
 import 'package:currencyconverterapp/domain/entity/country_entity.dart';
 import 'package:currencyconverterapp/domain/entity/currency_historical_entity.dart';
 import 'package:currencyconverterapp/presentation/bloc/currency_converter_bloc/currency_converter_bloc.dart';
 import 'package:currencyconverterapp/presentation/ui/currency_converter_screen/widget/currency_converter_screen_body_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CurrencyConverterScreen extends BaseStatefulWidget {
   const CurrencyConverterScreen({Key? key}) : super(key: key);
@@ -47,6 +45,9 @@ class _CurrencyConverterScreenState extends BaseState<CurrencyConverterScreen> {
               .add(SetCountriesListEvent(countriesList: state.countriesList));
         } else if (state is SetCountriesListState) {
           _countriesList = state.countriesList!;
+          BlocProvider.of<CurrencyConverterBloc>(context)
+              .add(const ConvertCurrencyEvent());
+        } else if (state is ConvertCurrencyState) {
           BlocProvider.of<CurrencyConverterBloc>(context).add(
               const GetCurrencyHistoricalListEvent(
                   fromCurrencyId: "0", toCurrencyId: "0"));

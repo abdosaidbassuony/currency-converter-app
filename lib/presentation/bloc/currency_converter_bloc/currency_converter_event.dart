@@ -46,3 +46,13 @@ class SelectToCurrencyEvent extends CurrencyConverterEvent {
   @override
   List<Object?> get props => [toCurrencyId];
 }
+
+class ConvertCurrencyEvent extends CurrencyConverterEvent {
+  final String? toCurrencyId;
+  final String? fromCurrencyId;
+
+  const ConvertCurrencyEvent({this.toCurrencyId, this.fromCurrencyId});
+
+  @override
+  List<Object?> get props => [toCurrencyId, fromCurrencyId];
+}
