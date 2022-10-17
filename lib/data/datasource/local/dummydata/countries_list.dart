@@ -3,23 +3,23 @@ import 'package:currencyconverterapp/data/model/country_model.dart';
 
 List<CountryModel> countriesList = [
   CountryModel(
-      countryId: "0",
+      countryId: "EGP",
       countryCurrencyCode: "EG",
-      countryName: "Egypt",
+      countryName: "South African rand",
       countryImage: ImagePath.egyptFlagImage),
   CountryModel(
-      countryId: "1",
+      countryId: "KWD",
       countryCurrencyCode: "KWD",
-      countryName: "Kuwait",
+      countryName: "South African rand",
       countryImage: ImagePath.kuwaitFlagImage),
   CountryModel(
-      countryId: "3",
+      countryId: "SAR",
       countryCurrencyCode: "SAR",
       countryName: "Saudi Arabia ",
       countryImage: ImagePath.saudiArabiaFlagImage),
   CountryModel(
-      countryId: "2",
+      countryId: "USA",
       countryCurrencyCode: "USA",
-      countryName: "USA",
+      countryName: "South African rand",
       countryImage: ImagePath.usaFlagImage),
 ];

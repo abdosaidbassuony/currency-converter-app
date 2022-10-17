@@ -1,10 +1,11 @@
 import 'package:currencyconverterapp/domain/entity/country_entity.dart';
 
 class CurrencyHistoricalEntity {
-  CountryEntity? formCurrency;
-  CountryEntity? toCurrency;
-  double? currencyValue;
+  String? formCurrency;
+  String? toCurrency;
+  num? currencyValue;
+  String? date;
 
   CurrencyHistoricalEntity(
-      {this.currencyValue, this.formCurrency, this.toCurrency});
+      {this.currencyValue, this.formCurrency, this.toCurrency, this.date});
 }

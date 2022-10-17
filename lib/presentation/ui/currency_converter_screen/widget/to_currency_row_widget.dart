@@ -20,13 +20,18 @@ class ToCurrencyRowWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          DropdownButton<String>(
-            items: getDropDownListItem(),
-            value: BlocProvider.of<CurrencyConverterBloc>(context).toCurrencyId,
-            onChanged: (value) {
-              BlocProvider.of<CurrencyConverterBloc>(context)
-                  .add(SelectToCurrencyEvent(toCurrencyId: value));
-            },
+          Expanded(
+            flex: 2,
+            child: DropdownButton<String>(
+              items: getDropDownListItem(),
+              isExpanded: true,
+              value:
+                  BlocProvider.of<CurrencyConverterBloc>(context).toCurrencyId,
+              onChanged: (value) {
+                BlocProvider.of<CurrencyConverterBloc>(context)
+                    .add(SelectToCurrencyEvent(toCurrencyId: value));
+              },
+            ),
           ),
           const SizedBox(width: 32),
           Expanded(

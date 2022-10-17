@@ -1,12 +1,16 @@
 class CountryEntity {
   String? countryId;
   String? countryName;
-  String? countryCurrencyCode;
   String? countryImage;
+  String? currencyId;
+  String? currencyName;
+  String? currencySymbol;
 
   CountryEntity(
       {this.countryId,
-      this.countryCurrencyCode,
       this.countryImage,
-      this.countryName});
+      this.countryName,
+      this.currencyId,
+      this.currencyName,
+      this.currencySymbol});
 }

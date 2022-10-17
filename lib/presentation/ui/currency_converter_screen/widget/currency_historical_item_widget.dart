@@ -22,14 +22,14 @@ class CurrencyHistoricalItemWidget extends StatelessWidget {
                 Row(
                   children: [
                     const Text("From: "),
-                    Text(currencyHistoricalItem!.formCurrency!.countryName!)
+                    Text(currencyHistoricalItem!.formCurrency!)
                   ],
                 ),
                 const SizedBox(height: 16),
                 Row(
                   children: [
                     const Text("To: "),
-                    Text(currencyHistoricalItem!.toCurrency!.countryName!)
+                    Text(currencyHistoricalItem!.toCurrency!)
                   ],
                 ),
               ],

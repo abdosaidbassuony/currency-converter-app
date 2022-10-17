@@ -38,15 +38,16 @@ class CurrencyConverterBloc
       GetCurrencyHistoricalListEvent event,
       Emitter<CurrencyConverterState> emit) async {
     emit(CurrencyConverterLoadingState());
-    emit(await _baseCurrencyConverterRepository.getCurrencyHistorical());
+    emit(await _baseCurrencyConverterRepository.getCurrencyHistorical(
+        toCurrency: toCurrencyId, fromCurrency: fromCurrencyId));
   }
 
   FutureOr<void> _onSetCountriesListEvent(
       SetCountriesListEvent event, Emitter<CurrencyConverterState> emit) {
     _countriesList = event.countriesList!;
     if (_countriesList.isNotEmpty) {
-      fromCurrencyId = _countriesList.first.countryId;
-      toCurrencyId = _countriesList.first.countryId;
+      fromCurrencyId = _countriesList.last.countryId;
+      toCurrencyId = _countriesList.last.countryId;
     }
     emit(SetCountriesListState(countriesList: event.countriesList!));
   }

@@ -14,7 +14,6 @@ class CountryModel {
 
   CountryEntity toCountryEntity() {
     return CountryEntity(
-        countryCurrencyCode: countryCurrencyCode,
         countryId: countryId,
         countryImage: countryImage,
         countryName: countryName);

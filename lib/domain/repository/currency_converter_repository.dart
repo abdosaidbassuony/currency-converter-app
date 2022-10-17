@@ -5,7 +5,11 @@ import 'package:currencyconverterapp/domain/entity/currency_historical_entity.da
 abstract class CurrencyConverterRepository {
   Future<List<CountryEntity>> getCountriesList();
 
-  Future<List<CurrencyHistoricalEntity>> currencyHistoricalList();
+  Future<List<CurrencyHistoricalEntity>> currencyHistoricalList(
+      {String? startDate,
+      String? endDate,
+      String? toCurrency,
+      String? fromCurrency});
 
   Future<CurrencyConvertEntity> convertCurrency(
       {String? formCurrencyId, String? toCurrencyId});

@@ -6,7 +6,15 @@ class GetCurrencyHistoricalUseCase {
 
   GetCurrencyHistoricalUseCase(this.currencyConverterRepository);
 
-  Future<List<CurrencyHistoricalEntity>> execute() async {
-    return await currencyConverterRepository.currencyHistoricalList();
+  Future<List<CurrencyHistoricalEntity>> execute(
+      {String? startDate,
+      String? endDate,
+      String? toCurrency,
+      String? fromCurrency}) async {
+    return await currencyConverterRepository.currencyHistoricalList(
+        toCurrency: toCurrency,
+        startDate: startDate,
+        endDate: endDate,
+        fromCurrency: fromCurrency);
   }
 }
