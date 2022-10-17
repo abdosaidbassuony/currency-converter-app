@@ -95,7 +95,6 @@ class CurrencyConverterBloc
       Emitter<CurrencyConverterState> emit) {
     String toCurrencyValue =
         (double.parse(event.fromCurrency!) * currencyValue!).toString();
-    print("toCurrencyValue $toCurrencyValue");
     emit(FromCurrencyTextValueChangedState(toCurrencyValue: toCurrencyValue));
   }
 }

@@ -1,6 +1,3 @@
-import 'package:dio/dio.dart';
-import 'package:drift/drift.dart';
-
 import 'package:currencyconverterapp/core/utils/extensions.dart';
 import 'package:currencyconverterapp/data/datasource/local/database/database.dart';
 import 'package:currencyconverterapp/data/datasource/remote/currency_converter_api_service/currency_converter_api_service.dart';
@@ -9,6 +6,8 @@ import 'package:currencyconverterapp/domain/entity/country_entity.dart';
 import 'package:currencyconverterapp/domain/entity/currecny_value_entity.dart';
 import 'package:currencyconverterapp/domain/entity/currency_historical_entity.dart';
 import 'package:currencyconverterapp/domain/repository/currency_converter_repository.dart';
+import 'package:dio/dio.dart';
+import 'package:drift/drift.dart';
 
 class CurrencyConverterRepositoryImpl extends CurrencyConverterRepository {
   final CurrencyConverterApiService _currencyConverterApiService;
@@ -39,9 +38,7 @@ class CurrencyConverterRepositoryImpl extends CurrencyConverterRepository {
                 formCurrency: fromCurrency,
                 toCurrency: toCurrency)));
       }
-    } on DioError catch (e) {
-      print("Error: ${e.response}");
-    }
+    } on DioError catch (e) {}
 
     return currencyHistoricalEntityList;
   }
@@ -56,7 +53,8 @@ class CurrencyConverterRepositoryImpl extends CurrencyConverterRepository {
         (response.results as Map).toList((e) async {
           CountryEntity countriesModel =
               CountriesModel.fromJson(e.value).toCountryEntity();
-          return await _appDatabase.insertCountries(CountriesTableCompanion(
+          currencyEntityList.add(countriesModel);
+          await _appDatabase.insertCountries(CountriesTableCompanion(
               currencySymbol: Value(countriesModel.currencySymbol),
               countryImage: Value(countriesModel.countryImage),
               currencyName: Value(countriesModel.currencyName),
@@ -76,10 +74,7 @@ class CurrencyConverterRepositoryImpl extends CurrencyConverterRepository {
         }
       }
     } on DioError catch (e) {
-      print("error : ${e.response}");
-    } catch (e) {
-      print("error : ${e.toString()}");
-    }
+    } catch (e) {}
     return currencyEntityList;
   }
 
@@ -95,9 +90,7 @@ class CurrencyConverterRepositoryImpl extends CurrencyConverterRepository {
         currencyValue:
             currencyConvertResponse["${formCurrencyId}_$toCurrencyId"],
       );
-    } catch (e) {
-      print("error : $e");
-    }
+    } catch (e) {}
     return convertEntity!;
   }
 }

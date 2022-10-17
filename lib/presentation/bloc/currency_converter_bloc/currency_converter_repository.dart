@@ -49,7 +49,6 @@ class CurrencyConverterRepoImp extends BaseCurrencyConverterRepo {
               endDate: DateFormat("yyyy-MM-dd").format(DateTime.now()),
               toCurrency: toCurrency));
     } catch (e) {
-      print("error $e");
       currencyConverterState =
           CurrencyConverterErrorState(errorMessage: e.toString());
     }
