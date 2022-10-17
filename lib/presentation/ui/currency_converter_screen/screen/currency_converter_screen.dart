@@ -1,10 +1,12 @@
+import 'package:flutter/material.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:currencyconverterapp/core/base_widget/base_stateful_widget.dart';
 import 'package:currencyconverterapp/domain/entity/country_entity.dart';
 import 'package:currencyconverterapp/domain/entity/currency_historical_entity.dart';
 import 'package:currencyconverterapp/presentation/bloc/currency_converter_bloc/currency_converter_bloc.dart';
 import 'package:currencyconverterapp/presentation/ui/currency_converter_screen/widget/currency_converter_screen_body_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CurrencyConverterScreen extends BaseStatefulWidget {
   const CurrencyConverterScreen({Key? key}) : super(key: key);
@@ -49,14 +51,21 @@ class _CurrencyConverterScreenState extends BaseState<CurrencyConverterScreen> {
               .add(const ConvertCurrencyEvent());
         } else if (state is ConvertCurrencyState) {
           BlocProvider.of<CurrencyConverterBloc>(context).add(
-              const GetCurrencyHistoricalListEvent(
-                  fromCurrencyId: "0", toCurrencyId: "0"));
+              SetCurrencyValueEvent(
+                  currencyValue: state.currencyConvertEntity!.currencyValue));
+          _resetCurrencyTextControllerValue(state);
+          BlocProvider.of<CurrencyConverterBloc>(context)
+              .add(const GetCurrencyHistoricalListEvent());
         } else if (state is GetCurrencyHistoricalListSuccessfullyState) {
           _currencyHistoricalList = state.currencyHistoricalList!;
         } else if (state is SelectFromCurrencyState) {
-          fromCurrencyController.text = "1";
+          BlocProvider.of<CurrencyConverterBloc>(context)
+              .add(const ConvertCurrencyEvent());
         } else if (state is SelectToCurrencyState) {
-          fromCurrencyController.text = "1";
+          BlocProvider.of<CurrencyConverterBloc>(context)
+              .add(const ConvertCurrencyEvent());
+        } else if (state is FromCurrencyTextValueChangedState) {
+          toCurrencyController.text = state.toCurrencyValue!;
         }
       },
       builder: (context, state) {
@@ -84,6 +93,12 @@ class _CurrencyConverterScreenState extends BaseState<CurrencyConverterScreen> {
               currencyHistoricalList: _currencyHistoricalList,
               fromCurrencyController: fromCurrencyController,
               toCurrencyController: toCurrencyController);
+        } else if (state is FromCurrencyTextValueChangedState) {
+          return CurrencyConverterScreenBodyWidget(
+              countriesList: _countriesList,
+              currencyHistoricalList: _currencyHistoricalList,
+              fromCurrencyController: fromCurrencyController,
+              toCurrencyController: toCurrencyController);
         } else {
           return CurrencyConverterScreenBodyWidget(
               countriesList: _countriesList,
@@ -93,5 +108,11 @@ class _CurrencyConverterScreenState extends BaseState<CurrencyConverterScreen> {
         }
       },
     );
+  }
+
+  void _resetCurrencyTextControllerValue(ConvertCurrencyState state) {
+    fromCurrencyController.text = "1";
+    toCurrencyController.text =
+        state.currencyConvertEntity!.currencyValue.toString();
   }
 }

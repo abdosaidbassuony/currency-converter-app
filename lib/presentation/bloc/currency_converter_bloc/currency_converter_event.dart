@@ -30,21 +30,21 @@ class GetCurrencyHistoricalListEvent extends CurrencyConverterEvent {
 }
 
 class SelectFromCurrencyEvent extends CurrencyConverterEvent {
-  final String? fromCurrencyId;
+  final String? fromCountryId;
 
-  const SelectFromCurrencyEvent({this.fromCurrencyId});
+  const SelectFromCurrencyEvent({this.fromCountryId});
 
   @override
-  List<Object?> get props => [fromCurrencyId];
+  List<Object?> get props => [fromCountryId];
 }
 
 class SelectToCurrencyEvent extends CurrencyConverterEvent {
-  final String? toCurrencyId;
+  final String? toCountryId;
 
-  const SelectToCurrencyEvent({this.toCurrencyId});
+  const SelectToCurrencyEvent({this.toCountryId});
 
   @override
-  List<Object?> get props => [toCurrencyId];
+  List<Object?> get props => [toCountryId];
 }
 
 class ConvertCurrencyEvent extends CurrencyConverterEvent {
@@ -55,4 +55,22 @@ class ConvertCurrencyEvent extends CurrencyConverterEvent {
 
   @override
   List<Object?> get props => [toCurrencyId, fromCurrencyId];
+}
+
+class SetCurrencyValueEvent extends CurrencyConverterEvent {
+  final num? currencyValue;
+
+  const SetCurrencyValueEvent({this.currencyValue});
+
+  @override
+  List<Object?> get props => [currencyValue];
+}
+
+class FromCurrencyTextValueChangedEvent extends CurrencyConverterEvent {
+  final String? fromCurrency;
+
+  const FromCurrencyTextValueChangedEvent({this.fromCurrency});
+
+  @override
+  List<Object?> get props => [fromCurrency];
 }

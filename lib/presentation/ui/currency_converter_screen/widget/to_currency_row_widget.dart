@@ -21,23 +21,24 @@ class ToCurrencyRowWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            flex: 2,
             child: DropdownButton<String>(
               items: getDropDownListItem(),
               isExpanded: true,
               value:
-                  BlocProvider.of<CurrencyConverterBloc>(context).toCurrencyId,
+                  BlocProvider.of<CurrencyConverterBloc>(context).toCountryId,
               onChanged: (value) {
                 BlocProvider.of<CurrencyConverterBloc>(context)
-                    .add(SelectToCurrencyEvent(toCurrencyId: value));
+                    .add(SelectToCurrencyEvent(toCountryId: value));
               },
             ),
           ),
           const SizedBox(width: 32),
           Expanded(
+            flex: 2,
             child: SizedBox(
               height: 40,
               child: TextFormField(
+                readOnly: true,
                 controller: toCurrencyController,
                 textAlign: TextAlign.center,
                 decoration: const InputDecoration(border: OutlineInputBorder()),
@@ -68,8 +69,11 @@ class ToCurrencyRowWidget extends StatelessWidget {
                           ),
                         ),
                   const SizedBox(width: 10),
-                  Text(
-                    country.countryName!,
+                  Flexible(
+                    child: Text(
+                      country.countryName!,
+                      style: const TextStyle(fontSize: 12),
+                    ),
                   )
                 ],
               ),

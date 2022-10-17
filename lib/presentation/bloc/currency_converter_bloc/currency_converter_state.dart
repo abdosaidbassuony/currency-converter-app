@@ -75,3 +75,12 @@ class ConvertCurrencyState extends CurrencyConverterState {
   @override
   List<Object?> get props => [currencyConvertEntity];
 }
+
+class FromCurrencyTextValueChangedState extends CurrencyConverterState {
+  final String? toCurrencyValue;
+
+  const FromCurrencyTextValueChangedState({this.toCurrencyValue});
+
+  @override
+  List<Object?> get props => [toCurrencyValue];
+}

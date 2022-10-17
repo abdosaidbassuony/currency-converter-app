@@ -1,4 +1,3 @@
-import 'package:currencyconverterapp/domain/entity/country_entity.dart';
 
 class CurrencyHistoricalEntity {
   String? formCurrency;
