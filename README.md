@@ -43,8 +43,11 @@ clean architecture enforces the separations of concerns dividing the software in
 of these layers focuses on doing one single thing, so it follows the Single Responsibility
 Principle. They also have their own Model representations and any communication needed with external
 layers are made through the use of abstractions.<br>
+
 get_it used to provide dependencies based on service locator pattern.<br>
+
 drift is used to save every data locally and avoid using other packages due to the easier way to
 work with data.<br>
+
 bloc is used to handle widget state and avoid using other state managements because it provides
 architecture, scalability, readability, complexity, etc.<br>
