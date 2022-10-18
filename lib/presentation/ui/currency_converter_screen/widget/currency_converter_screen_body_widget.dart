@@ -23,9 +23,9 @@ class CurrencyConverterScreenBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(title: Text(S.of(context).currencyConverter)),
       body: Container(
-        // height: double.maxFinite,
         margin: const EdgeInsets.all(16),
         child: Column(
           children: [
@@ -34,7 +34,10 @@ class CurrencyConverterScreenBodyWidget extends StatelessWidget {
                     countriesList: countriesList,
                     fromCurrencyController: fromCurrencyController,
                     toCurrencyController: toCurrencyController)),
-             Expanded(flex: 3, child: CurrencyHistoricalWidget(currencyHistoricalList:currencyHistoricalList))
+            Expanded(
+                flex: 3,
+                child: CurrencyHistoricalWidget(
+                    currencyHistoricalList: currencyHistoricalList))
           ],
         ),
       ),

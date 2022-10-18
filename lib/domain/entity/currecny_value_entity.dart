@@ -1,6 +1,5 @@
 class CurrencyConvertEntity {
-  double? fromCurrency;
-  double? toCurrency;
+  num? currencyValue;
 
-  CurrencyConvertEntity({this.toCurrency = 1, this.fromCurrency = 1});
+  CurrencyConvertEntity({this.currencyValue = 1});
 }

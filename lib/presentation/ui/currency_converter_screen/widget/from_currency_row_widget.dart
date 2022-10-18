@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,15 +22,14 @@ class FormCurrencyRowWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            flex: 2,
             child: DropdownButton<String>(
               isExpanded: true,
               items: getDropDownListItem(),
-              value: BlocProvider.of<CurrencyConverterBloc>(context)
-                  .fromCurrencyId,
+              value:
+                  BlocProvider.of<CurrencyConverterBloc>(context).fromCountryId,
               onChanged: (value) {
                 BlocProvider.of<CurrencyConverterBloc>(context)
-                    .add(SelectFromCurrencyEvent(fromCurrencyId: value));
+                    .add(SelectFromCurrencyEvent(fromCountryId: value));
               },
             ),
           ),
@@ -37,11 +37,23 @@ class FormCurrencyRowWidget extends StatelessWidget {
             width: 32,
           ),
           Expanded(
+            flex: 2,
             child: SizedBox(
               height: 40,
               child: TextFormField(
+                keyboardType: TextInputType.number,
                 controller: fromCurrencyController,
                 textAlign: TextAlign.center,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    BlocProvider.of<CurrencyConverterBloc>(context).add(
+                        const FromCurrencyTextValueChangedEvent(
+                            fromCurrency: "0"));
+                  } else {
+                    BlocProvider.of<CurrencyConverterBloc>(context).add(
+                        FromCurrencyTextValueChangedEvent(fromCurrency: value));
+                  }
+                },
                 decoration: const InputDecoration(border: OutlineInputBorder()),
               ),
             ),
@@ -56,15 +68,14 @@ class FormCurrencyRowWidget extends StatelessWidget {
         .map((country) => DropdownMenuItem<String>(
               value: country.countryId,
               child: SizedBox(
-                // width: double.maxFinite,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     country.countryImage == null || country.countryImage == ""
                         ? const SizedBox()
                         : Container(
-                            height: 20,
-                            width: 30,
+                            height: 24,
+                            width: 24,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.fill,
@@ -73,8 +84,11 @@ class FormCurrencyRowWidget extends StatelessWidget {
                             ),
                           ),
                     const SizedBox(width: 10),
-                    Text(
-                      country.countryName!,
+                    Flexible(
+                      child: Text(
+                        country.countryName!,
+                        style: const TextStyle(fontSize: 12),
+                      ),
                     )
                   ],
                 ),

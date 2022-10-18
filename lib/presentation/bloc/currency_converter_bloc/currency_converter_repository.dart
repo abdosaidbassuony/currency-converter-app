@@ -1,8 +1,9 @@
+import 'package:intl/intl.dart';
+
 import 'package:currencyconverterapp/domain/usecases/convet_currency.dart';
 import 'package:currencyconverterapp/domain/usecases/get_countries_list.dart';
 import 'package:currencyconverterapp/domain/usecases/get_currency_historical.dart';
 import 'package:currencyconverterapp/presentation/bloc/currency_converter_bloc/currency_converter_bloc.dart';
-import 'package:intl/intl.dart';
 
 abstract class BaseCurrencyConverterRepo {
   Future<CurrencyConverterState> getCountriesList();
@@ -48,7 +49,6 @@ class CurrencyConverterRepoImp extends BaseCurrencyConverterRepo {
               endDate: DateFormat("yyyy-MM-dd").format(DateTime.now()),
               toCurrency: toCurrency));
     } catch (e) {
-      print("erro $e");
       currencyConverterState =
           CurrencyConverterErrorState(errorMessage: e.toString());
     }
