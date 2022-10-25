@@ -1,0 +1,24 @@
+{
+  "name": "currency-converter-app",
+  "version": "1.0.0",
+  "description": "`CurrencyConverterApp` is a simple app which displays list of all countries fetched\r from https://free.currencyconverterapi.com/ and allows conversion between different currencies. And\r displays Historical data for 2 currencies of your choosing for the last 7 days",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdosaidbassuony/currency-converter-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdosaidbassuony/currency-converter-app/issues"
+  },
+  "homepage": "https://github.com/abdosaidbassuony/currency-converter-app#readme"
+}

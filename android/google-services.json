@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "220556464358",
+    "project_id": "currency-converter-2fb1f",
+    "storage_bucket": "currency-converter-2fb1f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220556464358:android:9745ac7196c08ab5f0ab27",
+        "android_client_info": {
+          "package_name": "com.example.currencyconverterapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220556464358-6dfqpvqigo7v4kq1jnmdbbnvfuvpf0p3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-mbTgD61tYCiV_keA95_qcanzNlW1mJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220556464358-6dfqpvqigo7v4kq1jnmdbbnvfuvpf0p3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
