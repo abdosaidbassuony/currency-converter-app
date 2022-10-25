@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Currency Converter',
+
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
