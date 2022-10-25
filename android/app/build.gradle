@@ -66,6 +66,8 @@ android {
                 artifactType="APK"
                 releaseNotesFile="/path/to/releasenotes.txt"
                 testers="abdulrahman.said.bassuony@gmail.com"
+                serviceCredentialsFile="android/currencyconverterapp-4469e5b38458.json"
+
             }
         }
     }
