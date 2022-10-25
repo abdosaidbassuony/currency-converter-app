@@ -10,7 +10,7 @@ import 'package:currencyconverterapp/presentation/ui/currency_converter_screen/s
 
 void main() async {
   await initializeDependencies();
-  runApp(const MyApp(););
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

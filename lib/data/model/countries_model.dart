@@ -1,6 +1,6 @@
 import 'package:currencyconverterapp/domain/entity/country_entity.dart';
 
-class CountriesModel {
+class CountriesModel extends CountryEntity {
   CountriesModel({
     this.alpha3,
     this.currencyId,
